@@ -35,11 +35,22 @@
   <br />
   <br />
 
+<!--
   <center>
     Developed by <a href="https://twitter.com/<%= Settings.programmer_twitter_id %>/" target="_blank">@<%= Settings.programmer_twitter_id %></a>,
     Designed by <a href="https://twitter.com/<%= Settings.designer_twitter_id %>/" target="_blank">@<%= Settings.designer_twitter_id %></a>,
     Licence by <a href="https://creativecommons.org/licenses/by-nc-sa/2.1/jp/" target="_blank">CC BY-NC-SA 2.1</a>
   </center>
+-->
+
+  <div id="user_nav">
+  <% if current_user %>
+  <%= current_user.name %>さん <%= link_to "ログアウト" ,logout_path %>
+  <% else %>
+  <%= link_to "Twitterでlogin","/auth/twitter" %>
+  <%= link_to "facebookでlogin", "/auth/facebook" %>
+  <% end %>
+  </div>
 
   <br />
 
