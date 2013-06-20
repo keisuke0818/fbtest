@@ -3,8 +3,8 @@ twitter_key:    <%= ENV['TWITTER_KEY'] %>
 twitter_secret: <%= ENV['TWITTER_SECRET'] %>
 
 # Facebook OAuth Setting
-facebook_app_id:     <%= ENV['545991468781881'] %>
-facebook_app_secret: <%= ENV['d909894f72e9d95c14f3a66d445802ae'] %>
+facebook_app_id:     <%= ENV['FACEBOOK_KEY'] %>
+facebook_app_secret: <%= ENV['FACEBOOK_SECRET'] %>
 
 # GitHub OAuth Setting
 github_client_id: <%= ENV['GITHUB_CLIENT_ID'] %>
