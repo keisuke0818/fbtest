@@ -5,7 +5,19 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <script>
+    var sherlock_firstbyte = Number(new Date());
+    var googleMapsUrl = '//maps.googleapis.com/maps/api/js?language=ja&sensor=false&v=3&libraries=places&client=gme-airbnbinc&channel=monorail-prod';
+    var userAttributeCookies = {
+      flags_name: 'flags',
+      roles_name: 'roles',
+      flags: {"can_see_community":2,"og_publish":16,"has_wishlisted":32,"update_cached":64,"revert_to_admin":128,"facebook_connected":256,"meow":512,"has_search":1024,"search_help_dropdown":2048,"has_dates":4096,"show_fb_prompt":8192,"lightweight_wishlist":16384,"can_send_profile_messages":32768,"just_logged_in":65536,"has_been_host":131072,"should_drop_pellet":262144,"custom_faq_links":524288,"is_active_host":1048576,"should_drop_pellet_for_corgi":2097152,"nyan":4194304,"fb_clickthrough_banner":8388608,"fb_clickthrough_banner_sticky":16777216,"fb_clickthrough_modal_sticky":33554432,"fb_clickthrough_modal_activity":67108864,"can_see_meetups":134217728,"should_drop_sift_pellet":268435456,"can_see_groups":536870912},
+      roles: {"is_admin":1,"is_aircrew":8,"is_content_manager":1048576,"is_stats_admin":16777216}
+    };
+  </script>
 </head>
+
 <body>
 
   <%# グローバルメニュー %>
@@ -43,17 +55,21 @@
   </center>
 -->
 
-  <div id="user_nav">
-  <% if current_user %>
-  <%= current_user.name %>さん <%= link_to "ログアウト" ,logout_path %>
-  <% else %>
-  <%= link_to "Twitterでlogin","/auth/twitter" %>
-  <%= link_to "facebookでlogin", "/auth/facebook" %>
-  <% end %>
-  </div>
+　<div id="user_nav">
+　　<%= link_to "Twitterでlogin","/auth/twitter" %>
+　　<%= link_to "facebookでlogin", "/auth/facebook" %>
+　</div>
+　<%= yield %>
 
   <br />
 
+  </div>
+
+  <div class="input-wrapper">
+    <input type="text" class="location" autocomplete="off" id="location" name="location" placeholder="どちらにお出かけですか？" />
+    <p id="enter_location_error_message" class="bad" style="display:none;">
+      行き先を設定
+    </p>
   </div>
 
 </body>
